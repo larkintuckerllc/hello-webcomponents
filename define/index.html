@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Webcomponents</title>
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+    window.addEventListener('WebComponentsReady', () => {
+      const rootEl = document.getElementById('root');
+      class HelloWorld extends HTMLElement {
+        constructor() {
+          super();
+          const shadowRootEl = this.attachShadow({mode: 'open'});
+          shadowRootEl.innerHTML = `
+            <style>
+              #root {
+                display: inline-block;
+                font-size: 0px;
+              }
+              .block {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+              }
+              .block--red {
+                background-color: red;
+              }
+              .block--blue {
+                background-color: blue;
+              }
+            </style>
+            <div id="root">
+              <div class="block block--red"></div>
+              <div class="block block--blue"></div>
+            </div>
+          `;
+        }
+      }
+      window.customElements.define('hello-world', HelloWorld);
+      rootEl.appendChild(document.createElement('hello-world'));
+      rootEl.appendChild(document.createElement('hello-world'));
+    });
+    </script>
+  </body>
+</html>
