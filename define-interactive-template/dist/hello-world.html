@@ -36,49 +36,51 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var thisDocument = document.currentScript.ownerDocument;
-window.addEventListener('WebComponentsReady', function () {
-  var HelloWorld = function (_HTMLElement) {
-    _inherits(HelloWorld, _HTMLElement);
+(function () {
+  var thisDocument = document.currentScript.ownerDocument;
+  window.addEventListener('WebComponentsReady', function () {
+    var HelloWorld = function (_HTMLElement) {
+      _inherits(HelloWorld, _HTMLElement);
 
-    function HelloWorld() {
-      _classCallCheck(this, HelloWorld);
+      function HelloWorld() {
+        _classCallCheck(this, HelloWorld);
 
-      var _this = _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).call(this));
+        var _this = _possibleConstructorReturn(this, (HelloWorld.__proto__ || Object.getPrototypeOf(HelloWorld)).call(this));
 
-      _this.handleClick = _this.handleClick.bind(_this);
-      var shadowRootEl = _this.attachShadow({ mode: 'open' });
-      var template = thisDocument.getElementById('hello-world');
-      var clone = document.importNode(template.content, true);
-      shadowRootEl.appendChild(clone);
-      var internalRootEl = shadowRootEl.getElementById('root');
-      _this.flowerEl = shadowRootEl.getElementById('root__flower');
-      _this.blockEls = internalRootEl.getElementsByClassName('block');
-      for (var i = 0; i < _this.blockEls.length; i += 1) {
-        var blockEl = _this.blockEls[i];
-        blockEl.addEventListener('click', _this.handleClick);
-      }
-      return _this;
-    }
-
-    _createClass(HelloWorld, [{
-      key: 'disconnectedCallback',
-      value: function disconnectedCallback() {
-        for (var i = 0; i < this.blockEls.length; i += 1) {
-          var blockEl = this.blockEls[i];
-          blockEl.removeEventListener('click', this.handleClick);
+        _this.handleClick = _this.handleClick.bind(_this);
+        var shadowRootEl = _this.attachShadow({ mode: 'open' });
+        var template = thisDocument.getElementById('hello-world');
+        var clone = document.importNode(template.content, true);
+        shadowRootEl.appendChild(clone);
+        var internalRootEl = shadowRootEl.getElementById('root');
+        _this.flowerEl = shadowRootEl.getElementById('root__flower');
+        _this.blockEls = internalRootEl.getElementsByClassName('block');
+        for (var i = 0; i < _this.blockEls.length; i += 1) {
+          var blockEl = _this.blockEls[i];
+          blockEl.addEventListener('click', _this.handleClick);
         }
+        return _this;
       }
-    }, {
-      key: 'handleClick',
-      value: function handleClick(e) {
-        this.flowerEl.innerHTML = e.target.dataset.flower;
-      }
-    }]);
 
-    return HelloWorld;
-  }(HTMLElement);
+      _createClass(HelloWorld, [{
+        key: 'disconnectedCallback',
+        value: function disconnectedCallback() {
+          for (var i = 0; i < this.blockEls.length; i += 1) {
+            var blockEl = this.blockEls[i];
+            blockEl.removeEventListener('click', this.handleClick);
+          }
+        }
+      }, {
+        key: 'handleClick',
+        value: function handleClick(e) {
+          this.flowerEl.innerHTML = e.target.dataset.flower;
+        }
+      }]);
 
-  window.customElements.define('hello-world', HelloWorld);
-});
+      return HelloWorld;
+    }(HTMLElement);
+
+    window.customElements.define('hello-world', HelloWorld);
+  });
+})();
 </script>
