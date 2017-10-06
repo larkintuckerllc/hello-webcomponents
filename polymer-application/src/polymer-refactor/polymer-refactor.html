@@ -1,0 +1,55 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="polymer-refactor">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+      #root {
+        display: inline-block;
+        font-size: 0px;
+      }
+      .block {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+      }
+      .block--red {
+        background-color: red;
+      }
+      .block--blue {
+        background-color: blue;
+      }
+      #root__flower {
+        font-size: 20px;
+      }
+    </style>
+    <div id="root">
+      <div data-flower="red rose" class="block block--red" on-click="handleClick"></div>
+      <div data-flower="blue iris" class="block block--blue" on-click="handleClick"></div>
+      <div id="root__flower">[[flowerText]]</div>
+    </div>
+  </template>
+  <script>
+    /**
+     * `polymer-refactor`
+     *
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerRefactor extends Polymer.Element {
+      static get is() { return 'polymer-refactor'; }
+      constructor() {
+        super();
+        this.flowerText = '';
+      }
+      handleClick(e) {
+        this.flowerText = e.target.dataset.flower;
+      }
+    }
+    window.customElements.define(PolymerRefactor.is, PolymerRefactor);
+  </script>
+</dom-module>

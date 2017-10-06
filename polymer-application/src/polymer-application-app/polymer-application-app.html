@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../polymer-refactor/polymer-refactor.html">
+
+<dom-module id="polymer-application-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <polymer-refactor></polymer-refactor>
+    <polymer-refactor></polymer-refactor>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PolymerApplicationApp extends Polymer.Element {
+      static get is() { return 'polymer-application-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'polymer-application-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PolymerApplicationApp.is, PolymerApplicationApp);
+  </script>
+</dom-module>
