@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import App from './App';
 
 window.addEventListener('WebComponentsReady', () => {
   class HelloWorld extends HTMLElement {
@@ -9,7 +10,7 @@ window.addEventListener('WebComponentsReady', () => {
       shadowRootEl.innerHTML = '<div id="root"></div>';
       const internalRootEl = shadowRootEl.getElementById('root');
       render(
-        <div>Hello World</div>,
+        <App />,
         shadowRootEl.getElementById('root'),
       );
     }
