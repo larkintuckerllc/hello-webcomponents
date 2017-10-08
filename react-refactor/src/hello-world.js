@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import retargetEvents from 'react-shadow-dom-retarget-events';
 import App from './App';
 
 window.addEventListener('WebComponentsReady', () => {
@@ -18,12 +19,6 @@ window.addEventListener('WebComponentsReady', () => {
             width: 100px;
             height: 100px;
           }
-          .block--red {
-            background-color: red;
-          }
-          .block--blue {
-            background-color: blue;
-          }
           #root__flower {
             font-size: 20px;
           }
@@ -35,6 +30,7 @@ window.addEventListener('WebComponentsReady', () => {
         <App />,
         shadowRootEl.getElementById('root'),
       );
+      retargetEvents(shadowRootEl);
     }
   }
   window.customElements.define('hello-world', HelloWorld);
