@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "style-ext-html-webpack-plugin": "^3.4.1"
+  }
+}

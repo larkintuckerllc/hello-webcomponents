@@ -18,17 +18,6 @@ module.exports = env => {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
-        {
-          test: /\.css$/,
-          use: [
-            {
-              loader: 'style-loader',
-            },
-            {
-              loader: 'css-loader',
-            }
-          ]
-        }
       ],
     },
     plugins: [

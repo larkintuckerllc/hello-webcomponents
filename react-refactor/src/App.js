@@ -10,7 +10,11 @@ class App extends Component {
   render() {
     const { flowerText } = this.state;
     return(
-      <div>{flowerText}</div>
+      <div>
+        <div data-flower="red rose" className="block block--red"></div>
+        <div data-flower="blue iris" className="block block--blue"></div>
+        <div id="root__flower">{flowerText}</div>
+      </div>
     );
   }
 }
