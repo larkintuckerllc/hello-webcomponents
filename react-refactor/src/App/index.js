@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Block from './Block';
+import './index.css';
 
 class App extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class App extends Component {
     const { changeText } = this;
     const { flowerText } = this.state;
     return(
-      <div>
+      <div id="appRoot">
         <Block color="red" text="Red Rose" changeText={changeText} />
         <Block color="blue" text="Blue Iris" changeText={changeText} />
-        <div id="root__flower">{flowerText}</div>
+        <div id="appRoot__flower">{flowerText}</div>
       </div>
     );
   }

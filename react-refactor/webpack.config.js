@@ -3,6 +3,8 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = env => {
   return ({
@@ -18,6 +20,13 @@ module.exports = env => {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+          })
+        },
       ],
     },
     plugins: [
@@ -31,6 +40,8 @@ module.exports = env => {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
       }),
+      new ExtractTextPlugin("styles.css"),
+      new StyleExtHtmlWebpackPlugin(),
     ],
   });
 };
