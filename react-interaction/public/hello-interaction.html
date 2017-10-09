@@ -1,0 +1,31 @@
+<template id="hello-interaction">
+  <div id="sample"></div>
+</template>
+<script>
+"use strict";
+(function() {
+  const thisDocument = document.currentScript.ownerDocument;
+  class HelloInteraction extends HTMLElement {
+    static get observedAttributes() {
+      return ['sample'];
+    }
+    constructor() {
+      super();
+      const shadowRootEl = this.attachShadow({mode: 'open'});
+      const template = thisDocument.getElementById('hello-interaction');
+      const clone = document.importNode(template.content, true);
+      shadowRootEl.appendChild(clone);
+      this.sampleEl = shadowRootEl.getElementById('sample');
+    }
+    attributeChangedCallback(attrName, oldVal, newVal) {
+      if (attrName === 'sample') {
+        this.sampleEl.innerHTML = newVal;
+      }
+    }
+    resetSample() {
+       this.sampleEl.innerHTML = 'I am now reset.';
+    }
+  }
+  window.customElements.define('hello-interaction', HelloInteraction);
+})();
+</script>

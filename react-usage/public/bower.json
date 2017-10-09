@@ -1,0 +1,20 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/larkintuckerllc/hello-webcomponents",
+  "authors": [
+    "John  Tucker <john@larkintuckerllc.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^1.0.14"
+  }
+}
